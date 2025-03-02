@@ -7,7 +7,8 @@ import silent_art
 print(silent_art.logo)
 
 auction_finished = False
-bidders_dict = {} 
+bidders_dict = {}
+highest_bid = 0
 highest_bidder = ""
 
 while not auction_finished:
@@ -26,8 +27,14 @@ while not auction_finished:
         auction_finished = True 
 
 # Loop through the bidders_dict and find the highes bid
-    
+for bidder, amount in bidders_dict.items():
+    if amount > highest_bid:
+        highest_bid = amount
+        highest_bidder = bidder
 
+# Print out the highest bid
+print(f"\nThe winner is {highest_bidder}, with a bid of ${highest_bid}.")
+    
 
 
 
