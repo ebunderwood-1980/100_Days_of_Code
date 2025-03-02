@@ -20,7 +20,7 @@ def caesar(message, direction, shift):
     if direction == 'decode':
         shift *= -1  
     result = ""
-    for letter in message:
+    for letter in message.lower():
         if not letter.isalpha():
             result += letter
         else:
@@ -40,5 +40,5 @@ while not game_over:
 
     caesar(message, type, shift)
 
-    if input("Type 'yes' if you want to go again.  Otherwise type 'no'.\n") == "no":
+    if input("Type 'yes' if you want to go again.  Otherwise type 'no'.\n").lower() == "no":
         game_over = True
