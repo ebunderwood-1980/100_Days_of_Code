@@ -1,11 +1,13 @@
 from constants import DECK
 from constants import LOGO
 import random
+from functions import check_blackjack
+import sys
 
 
 # Variables
 user_hand = []
-computer_hand = [] 
+computer_hand = []
 game_over = False
 user_turn = True
 
@@ -18,22 +20,10 @@ for _ in range(2):
 print(f"User hand:  {user_hand}")
 print(f"Computer hand:  {computer_hand}")
 
-if computer_hand[0] == 'A':
-    print("Ace showing, checking Dealer's Hole Card...") 
-    if DECK[computer_hand[1]][0] == 10: 
-        print("Dealer hits Blackjack!")
-        game_over = True
-    else:
-        print("No dice, lucky break")
-if computer_hand[0] in ['K', 'Q', 'J', '10']:
-    print("Face card showing, checking Dealer's Hole Card...")
-    if computer_hand[1] == 'A':
-        print("Dealer hits Blackjack!")
-        game_over = True
-    else:
-        print("No dice, lucky break")
+# Check to see if Dealer hit Blackjack
+if check_blackjack(computer_hand):
+    print("Game Over")
+    sys.exit
 
 while user_turn:
     take_hit = input("Type 'y' to get another card, type 'n' to pass:  ")
-
-    
